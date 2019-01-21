@@ -120,6 +120,9 @@ public class InfluxV9MetricRepo extends InfluxMetricRepo {
 
       String value = dimensionsEntry.getValue();
 
+      /** Spaces have to be preceded by double escape in Influxdb */
+      value = value.replaceAll(" ", "\\\\ ");
+
       tagMap.put(name, value);
 
     }
